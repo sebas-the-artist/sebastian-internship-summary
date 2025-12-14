@@ -24,3 +24,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.app__shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+.app__main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.forYou__wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.forYou__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.forYou__para {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}

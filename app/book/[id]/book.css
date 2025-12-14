@@ -1,0 +1,147 @@
+.book__wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.book__error {
+  color: #f97373;
+  font-size: 0.95rem;
+}
+
+/* layout */
+.book__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+/* cover column */
+.book__coverColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.book__img {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.book__pill {
+  align-self: flex-start;
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  background-color: #facc1533;
+  color: #facc15;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* content column */
+.book__contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.book__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.book__author {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.book__subtitle {
+  font-size: 1rem;
+  color: #e5e7eb;
+}
+
+.book__metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.book__metaItem {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.book__description {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+/* buttons */
+.book__buttonsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.book__button {
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.book__button--primary {
+  background: linear-gradient(to right, #22c55e, #22d3ee);
+  color: #020617;
+  font-weight: 600;
+}
+
+.book__button--secondary {
+  background-color: #020617;
+  border-color: #22d3ee55;
+  color: #e5e7eb;
+}
+
+.book__button--ghost {
+  background-color: transparent;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+/* tags */
+.book__tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.book__tag {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background-color: #111827;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* author section */
+.book__authorSection {
+  margin-top: 1.25rem;
+}
+
+.book__heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.book__authorDescription {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}

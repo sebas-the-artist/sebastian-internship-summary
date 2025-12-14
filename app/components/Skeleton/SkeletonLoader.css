@@ -1,0 +1,35 @@
+.skeleton__wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skeleton__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.skeleton__block {
+  border-radius: 0.75rem;
+  height: 140px;
+  background: linear-gradient(90deg, #0b1120 0%, #020617 40%, #0b1120 80%);
+  background-size: 200% 100%;
+  animation: skeleton__shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton__block--lg {
+  height: 200px;
+}
+
+@keyframes skeleton__shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

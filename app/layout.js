@@ -1,4 +1,27 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Providers from './components/Providers';
+import Sidebar from './components/Sidebar/Sidebar.js';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Providers>
+          <div className="app__shell">
+            <Sidebar />
+            <main className="app__main">{children}</main>
+          </div>
+        </Providers>
+      </body>
+    </html>
+  );
+}
+
+/*
+ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,3 +50,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+ */

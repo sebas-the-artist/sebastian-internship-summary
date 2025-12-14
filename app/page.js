@@ -1,4 +1,22 @@
-import Image from "next/image";
+export default function Home() {
+  return (
+    <main className="home__container">
+      <h1 className="home__title">Summarist Clone - Home Page</h1>
+      <p className="home__subtitle">Click "For You" in sidebar to test!</p>
+    </main>
+  );
+}
+
+
+
+
+//
+//
+//
+//
+//
+/*
+ import Image from "next/image";
 
 export default function Home() {
   return (
@@ -63,3 +81,4 @@ export default function Home() {
     </div>
   );
 }
+ */
