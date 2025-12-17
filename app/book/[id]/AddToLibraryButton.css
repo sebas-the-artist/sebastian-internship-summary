@@ -1,0 +1,36 @@
+.book__button.book__button--ghost[disabled] {
+  opacity: 0.75;
+  cursor: wait;
+  color: plum;
+  color: whitesmoke;
+}
+.book__button--ghost {
+  color: whitesmoke;
+  background: transparent;
+  border-color: whitesmoke;
+}
+/* 
+.book__libraryWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.book__libraryMessage {
+  min-height: 1rem; 
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.book__libraryWrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.25rem !important;
+}
+.book__libraryMessage {
+  height: 1rem !important; 
+  font-size: 0.8rem !important;
+  color: #9ca3af !important;
+  overflow: hidden !important;
+}
+ */

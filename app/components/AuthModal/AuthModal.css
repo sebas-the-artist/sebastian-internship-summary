@@ -102,3 +102,9 @@
   font-size: 0.85rem;
   cursor: pointer;
 }
+
+.authModal__errorText {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #f97373;
+}

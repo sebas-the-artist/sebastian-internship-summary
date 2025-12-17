@@ -1,0 +1,139 @@
+.library__wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.library__headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.library__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.library__text {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.library__grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.library__card {
+  padding: 0.9rem;
+  border-radius: 0.9rem;
+  border: 1px solid #111827;
+  background-color: #020617;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color 0.15s ease, transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.library__card:hover {
+  border-color: #4b5563;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+}
+
+.library__cardImg {
+  width: 100%;
+  border-radius: 0.6rem;
+  object-fit: cover;
+}
+
+.library__cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.library__cardTitle {
+  font-size: 0.96rem;
+  font-weight: 600;
+}
+
+.library__cardAuthor {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.library__pill {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.12rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  background-color: #facc1533;
+  color: #facc15;
+}
+
+.library__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.library__sortValue {
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.library__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.library__sortValue {
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.library__remove {
+  margin-top: 0.3rem;
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  color: grey;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.library__remove:hover {
+  text-decoration: underline;
+  color: #f97373;
+  scale: 1.05;
+}
+
+.library__remove {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.library__card:hover .library__remove {
+  opacity: 1;
+}

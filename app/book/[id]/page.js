@@ -1,5 +1,6 @@
 import "./book.css";
 import AddToLibraryButton from "./AddToLibraryButton";
+import HighlightsBox from "./HighlightsBox";
 
 async function fetchBookById(id) {
   const res = await fetch(
@@ -16,7 +17,6 @@ async function fetchBookById(id) {
 }
 
 export default async function BookPage({ params }) {
-  // Next 15+: params is a Promise
   const { id } = await params;
 
   let book;
@@ -38,6 +38,7 @@ export default async function BookPage({ params }) {
   return (
     <section className="book__wrapper">
       <div className="book__layout">
+        {/* Cover column */}
         <div className="book__coverColumn">
           <img src={book.imageLink} alt={book.title} className="book__img" />
           {book.subscriptionRequired && (
@@ -45,6 +46,7 @@ export default async function BookPage({ params }) {
           )}
         </div>
 
+        {/* Content column */}
         <div className="book__contentColumn">
           <h1 className="book__title">{book.title}</h1>
           <p className="book__author">by {book.author}</p>
@@ -72,8 +74,7 @@ export default async function BookPage({ params }) {
               Listen
             </a>
 
-            {/* Client component handles the click */}
-            <AddToLibraryButton bookId={book.id} />
+            <AddToLibraryButton book={book} />
           </div>
 
           <div className="book__tagsRow">
@@ -89,6 +90,9 @@ export default async function BookPage({ params }) {
             <h2 className="book__heading">About the author</h2>
             <p className="book__authorDescription">{book.authorDescription}</p>
           </div>
+
+          {/* Highlights section */}
+          <HighlightsBox bookId={book.id} />
         </div>
       </div>
     </section>
