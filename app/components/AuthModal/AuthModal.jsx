@@ -6,6 +6,161 @@ import {
   toggleAuthModal,
   setAuthLoading,
   setAuthError,
+  setUser,
+} from "../../store/authSlice";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../../lib/firebase";
+import "./AuthModal.css";
+
+export default function AuthModal() {
+  const dispatch = useDispatch();
+  const { isAuthModalOpen, authStatus, authError } = useSelector(
+    (state) => state.auth
+  );
+
+  const [authMode, setAuthMode] = useState("login");
+  const [authEmail, setAuthEmail] = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+
+  if (!isAuthModalOpen) return null;
+
+  const isLoading = authStatus === "loading";
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    dispatch(setAuthLoading());
+
+    try {
+      let cred;
+      if (authMode === "login") {
+        cred = await signInWithEmailAndPassword(auth, authEmail, authPassword);
+      } else {
+        cred = await createUserWithEmailAndPassword(
+          auth,
+          authEmail,
+          authPassword
+        );
+      }
+
+      dispatch(setUser(cred.user)); // ← FIX: store user + clear loading
+      dispatch(toggleAuthModal());
+      window.location.href = "/for-you";
+    } catch (error) {
+      dispatch(setAuthError(error.message || "Authentication failed")); // ← FIX: clear loading
+    }
+  };
+
+  const handleGuestLogin = async () => {
+    dispatch(setAuthLoading());
+    try {
+      const guestEmail = "guest@gmail.com";
+      const guestPassword = "password";
+
+      const cred = await signInWithEmailAndPassword(
+        auth,
+        guestEmail,
+        guestPassword
+      );
+
+      dispatch(setUser(cred.user)); // ← FIX: store user + clear loading
+      dispatch(toggleAuthModal());
+      window.location.href = "/for-you";
+    } catch (error) {
+      dispatch(setAuthError(error.message || "Guest login failed")); // ← FIX: clear loading
+    }
+  };
+
+  return (
+    <div className="authModal__overlay">
+      <div className="authModal__container">
+        <button
+          className="authModal__close"
+          onClick={() => dispatch(toggleAuthModal())}
+        >
+          ×
+        </button>
+
+        <h2 className="authModal__title">
+          {authMode === "login" ? "Login" : "Create account"}
+        </h2>
+
+        <form className="authModal__form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            className="authModal__input"
+            placeholder="Email"
+            value={authEmail}
+            onChange={(event) => setAuthEmail(event.target.value)}
+            required
+            disabled={isLoading}
+          />
+          <input
+            type="password"
+            className="authModal__input"
+            placeholder="Password"
+            value={authPassword}
+            onChange={(event) => setAuthPassword(event.target.value)}
+            required
+            disabled={isLoading}
+          />
+
+          {authError && <p className="authModal__errorText">{authError}</p>}
+
+          <button
+            type="submit"
+            className="authModal__button--primary"
+            disabled={isLoading}
+          >
+            {isLoading
+              ? "Working..."
+              : authMode === "login"
+              ? "Login"
+              : "Register"}
+          </button>
+        </form>
+
+        <div className="authModal__footer">
+          <p className="authModal__text">
+            {authMode === "login"
+              ? "Don't have an account?"
+              : "Already have an account?"}
+          </p>
+          <button
+            className="authModal__button--ghost"
+            type="button"
+            onClick={() =>
+              setAuthMode(authMode === "login" ? "register" : "login")
+            }
+            disabled={isLoading}
+          >
+            {authMode === "login" ? "Create one" : "Login"}
+          </button>
+        </div>
+
+        <button
+          className="authModal__button--guest"
+          type="button"
+          onClick={handleGuestLogin}
+          disabled={isLoading}
+        >
+          {isLoading ? "Working..." : "Continue as guest"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* "use client";
+
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  toggleAuthModal,
+  setAuthLoading,
+  setAuthError,
 } from "../../store/authSlice";
 import {
   createUserWithEmailAndPassword,
@@ -143,3 +298,4 @@ export default function AuthModal() {
     </div>
   );
 }
+ */

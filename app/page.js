@@ -1,84 +1,99 @@
-export default function Home() {
+// app/page.jsx
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import "./home.css";
+
+export default function HomePage() {
   return (
-    <main className="home__container">
-      <h1 className="home__title">Summarist Clone - Home Page</h1>
-      <p className="home__subtitle">Click "For You" in sidebar to test!</p>
-    </main>
-  );
-}
-
-
-
-
-//
-//
-//
-//
-//
-/*
- import Image from "next/image";
-
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <section className="home__wrapper">
+      <div className="home__inner">
+        {/* Left column – copy */}
+        <div className="home__content">
+          <p className="home__eyebrow">Welcome to Summarist</p>
+          <h1 className="home__title">
+            Turn long <span className="home__titleAccent">books</span> into
+            short, powerful ideas.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="home__subtitle">
+            Get concise audio and text summaries of the world&apos;s best
+            non‑fiction. Build a daily reading habit without needing hours a day.
           </p>
+
+          <div className="home__actions">
+            <Link href="/for-you" className="home__primaryButton">
+              Start exploring summaries
+            </Link>
+            <p className="home__hint">
+              You can always change theme and colors later in <Link href="/settings" className="home__titleAccent">Settings</Link>.
+            </p>
+          </div>
+
+          <div className="home__features">
+            <div className="home__feature">
+              <span className="home__featureDot" />
+              <div>
+                <p className="home__featureTitle">Book‑length ideas</p>
+                <p className="home__featureText">
+                  Summaries of popular titles like <em>Can&apos;t Hurt Me</em> and{" "}
+                  <em>Atomic Habits</em>.
+                </p>
+              </div>
+            </div>
+            <div className="home__feature">
+              <span className="home__featureDot" />
+              <div>
+                <p className="home__featureTitle">Listen or read</p>
+                <p className="home__featureText">
+                  Swap between audio and text without losing your place.
+                </p>
+              </div>
+            </div>
+            <div className="home__feature">
+              <span className="home__featureDot" />
+              <div>
+                <p className="home__featureTitle">Personalized feed</p>
+                <p className="home__featureText">
+                  The “For you” page highlights what matches your interests.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        {/* Right column – illustration + mini preview */}
+        <div className="home__side">
+          <div className="home__illustration">
+            {/* <Link href="/for-you" className=""> */}
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+              src="/assets/lady.svg"
+              alt="Person listening to book summaries"
+              width={420}
+              height={420}
+              className="home__image"
+              priority
+              />
+              {/* </Link> */}
+          </div>
+
+          <div className="home__previewCard">
+            <p className="home__previewLabel">Sneak peek</p>
+            <div className="home__previewRow">
+              <div className="home__previewCover" />
+              <div className="home__previewInfo">
+                <p className="home__previewTitle">Can&apos;t Hurt Me</p>
+                <p className="home__previewAuthor">David Goggins</p>
+                <p className="home__previewTag">15‑minute summary</p>
+              </div>
+            </div>
+            <Link href="/for-you" className="home__previewButton">
+              Open “For you” page
+            </Link>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }
- */

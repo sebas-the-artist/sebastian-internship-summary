@@ -1,4 +1,4 @@
-.authModal__overlay {
+/* .authModal__overlay {
   position: fixed;
   inset: 0;
   background-color: rgba(15, 23, 42, 0.7);
@@ -106,5 +106,123 @@
 .authModal__errorText {
   margin-top: 0.25rem;
   font-size: 0.8rem;
+  color: #f97373;
+}
+ */
+.authModal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.authModal__container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 24px 20px 20px;
+  border-radius: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.authModal__close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.authModal__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--fg);
+}
+
+.authModal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.authModal__input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 14px;
+}
+
+[data-theme="dark"] .authModal__input {
+  background-color: #020617;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+.authModal__input::placeholder {
+  color: #9ca3af;
+}
+
+.authModal__button--primary {
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
+  color: #020617;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.authModal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.authModal__text {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.authModal__button--ghost {
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.authModal__button--guest {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 999px;
+  padding: 8px 16px;
+  border: 1px dashed #cbd5f5;
+  background: transparent;
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.authModal__errorText {
+  margin-top: 4px;
+  font-size: 12px;
   color: #f97373;
 }

@@ -26,6 +26,9 @@
   color: #bbf7d0;
   font-size: 0.75rem;
 }
+[data-theme="light"] .player__badge {
+  color: black;
+}
 
 .player__title {
   font-size: 1.6rem;
@@ -60,7 +63,8 @@
   border-radius: 1rem;
   border: 1px solid #1f2937;
   padding: 1.25rem 1.1rem;
-  background: radial-gradient(circle at top left, #22c55e22, #020617);
+  /* background: radial-gradient(circle at top left, #22c55e22, #020617); */
+  background: radial-gradient(circle at top left, #d16e18, #020617);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
@@ -97,8 +101,7 @@
 }
 
 .player__controlButton--primary {
-  /* background: linear-gradient(to right, #22c55e, #22d3ee); */
-  background: linear-gradient(to right, #22c55e, #ee77a8);
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
   border-color: transparent;
   color: #020617;
   font-weight: 600;
@@ -161,4 +164,50 @@
   font-size: 0.95rem;
   color: #e5e7eb;
   white-space: pre-line; /* keeps paragraphs spaced */
+}
+
+[data-theme="light"] .player__summaryText {
+  color: black;
+}
+
+.player__wrapper {
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.player__header {
+  margin-bottom: 24px;
+}
+
+.player__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.player__author {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.player__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 32px;
+}
+
+.player__summaryHeading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.player__summary {
+  font-size: 14px;
+  color: #e5e7eb;
+  white-space: pre-line;
+}
+
+.player__error {
+  color: #f97373;
 }

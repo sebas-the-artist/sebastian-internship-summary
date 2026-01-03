@@ -1,55 +1,80 @@
+// app/player/[id]/page.jsx - FULL CODE with author bio included
+"use client";
+
+import { useParams } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchBookById } from "../../store/booksSlice";
+import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import "./player.css";
-import AudioPlayer from "./AudioPlayer";
 
-async function fetchBookById(id) {
-  const res = await fetch(
-    `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`,
-    { cache: "no-store" }
-  );
+export default function PlayerPage() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { currentBook, isLoading, error } = useSelector((state) => state.books);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch book");
-  }
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchBookById(id));
+    }
+  }, [id, dispatch]);
 
-  const data = await res.json();
-  return data;
-}
-
-export default async function PlayerPage({ params }) {
-  const { id } = await params;
-
-  let book;
-
-  try {
-    book = await fetchBookById(id);
-  } catch (error) {
+  if (isLoading || !currentBook) {
     return (
       <section className="player__wrapper">
-        <p className="player__error">
-          Could not load this book. Please try again later.
-        </p>
+        <p>Loading audio…</p>
       </section>
     );
   }
 
+  if (error) {
+    return (
+      <section className="player__wrapper">
+        <p className="player__error">Failed to load audio.</p>
+      </section>
+    );
+  }
+
+  const book = currentBook;
+  const shortSummary =
+    book.summary && book.summary.length > 450
+      ? book.summary.slice(0, 450) + "..."
+      : book.summary;
+
+  // COMBINED TEXT: Summary + Author bio
+  const fullAudioText = `${shortSummary}\n\nAbout the author: ${
+    book.authorDescription || "Author biography coming soon."
+  }`;
+
   return (
     <section className="player__wrapper">
       <header className="player__header">
-        <p className="player__badge">
-          {book.subscriptionRequired ? "Premium" : "Free"}
-        </p>
+        {book.subscriptionRequired && (
+          <span className="player__badge">Premium</span>
+        )}
         <h1 className="player__title">{book.title}</h1>
-        <p className="player__author">by {book.author}</p>
+        <p className="player__author">{book.author}</p>
       </header>
 
       <div className="player__layout">
         <div className="player__audioColumn">
-          <AudioPlayer audioSrc={book.audioLink} title={book.title} />
+          <div className="player__card">
+            <p className="player__nowPlayingLabel">Now playing</p>
+            <p className="player__nowPlayingTitle">{book.title}</p>
+
+            {/* Reads summary + author bio aloud */}
+            <AudioPlayer summaryText={fullAudioText} />
+          </div>
         </div>
 
         <div className="player__summaryColumn">
           <h2 className="player__summaryHeading">Summary</h2>
-          <p className="player__summaryText">{book.summary}</p>
+          <p className="player__summaryText">{shortSummary}</p>
+
+          <h2 className="player__summaryHeading">About the author</h2>
+          <p className="player__summaryText">
+            {book.authorDescription || "Author biography coming soon."}
+          </p>
         </div>
       </div>
     </section>

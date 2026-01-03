@@ -1,0 +1,40 @@
+/* SearchBar.css – keep ONLY this for the component */
+.search-bar {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  gap: 8px;
+}
+
+[data-theme="dark"] .search-bar {
+  border-color: #1f2937;
+  background: #020617;
+}
+
+.search-bar__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.search-bar__input::placeholder {
+  color: #9ca3af;
+}
+
+.search-bar__iconButton {
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

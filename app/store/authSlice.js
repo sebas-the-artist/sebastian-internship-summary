@@ -1,92 +1,95 @@
+/* 
+import { createSlice } from '@reduxjs/toolkit';
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: {
+    user: null,
+    isAuthModalOpen: false,
+    authStatus: 'idle',
+    authError: null,
+  },
+  reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    toggleAuthModal: (state) => {
+      state.isAuthModalOpen = !state.isAuthModalOpen;
+      state.authError = null;
+      state.authStatus = 'idle';
+    },
+    setAuthLoading: (state) => {
+      state.authStatus = 'loading';
+      state.authError = null;
+    },
+    setAuthError: (state, action) => {
+      state.authStatus = 'error';
+      state.authError = action.payload;
+    },
+    logout: (state) => {
+      state.user = null;
+    },
+  },
+});
+
+export const {
+  setUser,
+  toggleAuthModal,
+  setAuthLoading,
+  setAuthError,
+  logout,
+} = authSlice.actions;
+
+export default authSlice.reducer;
+
+ */
+
+// store/authSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
-// if authSlice.js is at app/store/authSlice.js
-//import { toggleAuthModal } from '../../store/authSlice';
-
-
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
-    isAuthModalOpen: false,
-    authStatus: "idle",
+    authStatus: "idle",      // "idle" | "loading" | "succeeded" | "failed"
     authError: null,
+    isAuthModalOpen: false,
   },
   reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
-    },
-    toggleAuthModal: (state) => {
+    toggleAuthModal(state) {
       state.isAuthModalOpen = !state.isAuthModalOpen;
-      state.authError = null;
-      state.authStatus = "idle";
+      // clear errors when opening
+      if (state.isAuthModalOpen) {
+        state.authError = null;
+      }
     },
-    setAuthLoading: (state) => {
+    setAuthLoading(state) {
       state.authStatus = "loading";
       state.authError = null;
     },
-    setAuthError: (state, action) => {
-      state.authStatus = "error";
+    setUser(state, action) {
+      state.user = action.payload;
+      state.authStatus = "succeeded";   // ← leaves "loading"
+      state.authError = null;
+    },
+    setAuthError(state, action) {
+      state.authStatus = "failed";      // ← leaves "loading"
       state.authError = action.payload;
     },
-    logout: (state) => {
+    logout(state) {
       state.user = null;
+      state.authStatus = "idle";
+      state.authError = null;
     },
   },
 });
 
 export const {
-  setUser,
   toggleAuthModal,
   setAuthLoading,
   setAuthError,
+  setUser,
   logout,
 } = authSlice.actions;
 
 export default authSlice.reducer;
-
-
-/* import { createSlice } from "@reduxjs/toolkit";
-
-const authSlice = createSlice({
-  name: "auth",
-  initialState: {
-    user: null,
-    isAuthModalOpen: false,
-    authStatus: "idle",
-    authError: null,
-  },
-  reducers: {
-    setUser: (state, action) => {
-      // Expect a plain object or null
-      state.user = action.payload;
-    },
-    toggleAuthModal: (state) => {
-      state.isAuthModalOpen = !state.isAuthModalOpen;
-      state.authError = null;
-      state.authStatus = "idle";
-    },
-    setAuthLoading: (state) => {
-      state.authStatus = "loading";
-      state.authError = null;
-    },
-    setAuthError: (state, action) => {
-      state.authStatus = "error";
-      state.authError = action.payload;
-    },
-    logout: (state) => {
-      state.user = null;
-    },
-  },
-});
-
-export const {
-  setUser,
-  toggleAuthModal,
-  setAuthLoading,
-  setAuthError,
-  logout,
-} = authSlice.actions;
-
-export default authSlice.reducer;
- */

@@ -37,18 +37,653 @@ body {
   padding: 2rem;
 }
 
-.forYou__wrapper {
-  max-width: 960px;
-  margin: 0 auto;
+/* globals.css */
+
+body {
+  margin: 0;
+  background: #020617; /* dark background like template */
 }
 
-.forYou__title {
-  font-size: 2rem;
+.app_shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app_main {
+  flex: 1;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #020617;
+  color: #f9fafb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app_shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app_main {
+  flex: 1;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+/*
+/
+/
+/
+/
+/
+/
+*/
+:root {
+  --bg: #020617;
+  --fg: #f9fafb;
+  --accent: #22d3ee;
+  --card-bg: #020617;
+  --border-color: #111827;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --accent: #1d4ed8; /* navy-ish */
+  --card-bg: #f9fafb;
+  --border-color: #e5e7eb;
+}
+
+@import "tailwindcss";
+
+/* Tailwind theme integration */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base dark/light preference (fallback) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Global theme variables driven by data-theme */
+:root {
+  --bg: #020617;
+  --fg: #f9fafb;
+  --accent: #22d3ee;
+  --card-bg: #020617;
+  --border-color: #111827;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --accent: #1d4ed8; /* navy-ish */
+  --card-bg: #f9fafb;
+  --border-color: #e5e7eb;
+}
+
+/* Global resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* App shell */
+.app_shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.app_main {
+  flex: 1;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ...you can keep the rest of your forYou__* rules as-is,
+   or gradually replace hard-coded colors with var(--card-bg), var(--border-color), etc.
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+   /
+    */
+.app_shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* .app_main {
+  flex: 1;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+} */
+.app_main {
+  flex: 1;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.app_header {
+  height: 64px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.app_logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.app_logoMark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  /* background: linear-gradient(to right, #22c55e, var(--accent)); */
+  /* background: linear-gradient(to right, #ffffff5b, #f4d4ffd4); */
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-size: 16px;
+  color: #020617;
 }
 
-.forYou__para {
-  font-size: 0.95rem;
+.app_logoText {
+  font-size: 18px;
+  font-weight: 700;
+}
+/*
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+*/
+
+/* [data-theme="dark"] .forYou__card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--fg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .forYou__cardAuthor {
   color: #9ca3af;
+}
+ */
+
+/* Add/update these in globals.css */
+:root {
+  /*  --favorite-color: #6b7280 !important; */
+  --favorite-color: #888888 !important;
+}
+.sidebar__logo {
+  height: auto;
+  max-width: 100%;
+  transition: filter 0.3s ease;
+}
+
+/* [data-theme="light"] .sidebar__logo {
+  filter: brightness(0.1) saturate(100%)
+    hue-rotate(var(--favorite-color-hue, 0deg));
+} */
+[data-theme="light"] .sidebar__logo {
+  filter: brightness(0.15) saturate(1.2)
+    hue-rotate(var(--favorite-color-hue, 120deg));
+}
+
+/* [data-theme="dark"] .sidebar__logo {
+  filter: brightness(0) saturate(100%) invert(1)
+    hue-rotate(var(--favorite-color-hue, 0deg));
+} */
+[data-theme="dark"] .sidebar__logo {
+  filter: brightness(0) saturate(100%) invert(1)
+    hue-rotate(var(--favorite-color-hue, 120deg));
+}
+
+/* Add to your globals.css */
+/* :root {
+  --favorite-color: #6b7280;
+}
+
+[data-theme="light"] .sidebar__logo {
+  filter: brightness(0.1) saturate(100%);
+}
+
+[data-theme="dark"] .sidebar__logo {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+.sidebar__logo {
+  height: auto;
+  max-width: 100%;
+  transition: filter 0.3s ease;
+} */
+
+.sidebar__container {
+  width: 220px;
+  min-height: 100vh;
+  padding: 24px 18px;
+  background: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* .sidebar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 4px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+.sidebar__link:hover {
+  background-color: rgba(148, 163, 184, 0.12);
+}
+
+.sidebar__link--active {
+  color: var(--fg);
+  font-weight: 600;
+}
+/*
+/
+/
+/
+/
+/
+/
+/
+/
+*/
+/* Sidebar.css */
+.sidebar__container {
+  width: 220px;
+  min-height: 100vh;
+  padding: 24px 20px;
+  background: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+}
+
+[data-theme="dark"] .sidebar__container {
+  background: var(--card-bg);
+  border-right-color: var(--border-color);
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* .sidebar__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+.sidebar__link:hover {
+  background-color: rgba(148, 163, 184, 0.16);
+}
+
+.sidebar__link--active {
+  color: #111827;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .sidebar__link {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .sidebar__link--active {
+  color: #f9fafb;
+}
+/*
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+*/
+
+.sidebar__logoRow {
+  margin-bottom: 24px;
+}
+
+/* .sidebar__logo {
+  height: auto;
+  max-width: 100%;
+}
+[data-theme="dark"] .sidebar__logo {
+  filter: grayscale(100) brightness(5);
+} */
+
+/* :root {
+  --favorite-color: #22c55e;
+}
+
+[data-theme="light"] .sidebar__logo {
+  filter: none;
+}
+
+[data-theme="dark"] .sidebar__logo {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+.sidebar__logo {
+  height: auto;
+  max-width: 100%;
+  filter: var(--favorite-color-filter, none);
+} */
+
+.sidebar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* padding: 8px 10px; */
+  padding: 12px 10px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#sidebar__divide {
+  margin-top: 48px;
+}
+
+.sidebar__icon {
+  width: 16px;
+  text-align: center;
+}
+
+/* SITE-WIDE RESPONSIVE (add to globals.css) */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 80px; /* Shrink sidebar */
+  }
+
+  .app_shell {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* Hide sidebar offscreen */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Show when toggled */
+  }
+
+  .app_shell {
+    margin-left: 0 !important; /* No sidebar margin */
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app_shell {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  h2 {
+    font-size: 1.25rem !important;
+  }
+}
+
+/*
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+*/
+
+/* Mobile hamburger menu */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: var(--fg);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Mobile overlay + slide-in sidebar */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+
+  body.mobile-menu-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(4px);
+  }
+
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    max-width: 85vw;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1000;
+  }
+
+  body.mobile-menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .app_shell {
+    margin-left: 0 !important;
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Close on outside click */
+  body.mobile-menu-open .app_shell {
+    position: relative;
+    z-index: 998;
+  }
+}
+
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+/* FORCE SIDEBAR OFFSCREEN ON MOBILE */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: translateX(-100%) !important;
+    z-index: 1000;
+    transition: transform 0.3s ease !important;
+  }
+
+  /* ONLY SHOW WHEN MENU OPEN */
+  body.mobile-menu-open .sidebar {
+    transform: translateX(0) !important;
+  }
+
+  /* RESET app_shell margin */
+  .app_shell {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .app_main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* HIDE HAMBURGER ON DESKTOP */
+@media (min-width: 769px) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
 }

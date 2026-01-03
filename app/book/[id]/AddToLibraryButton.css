@@ -3,34 +3,21 @@
   cursor: wait;
   color: plum;
   color: whitesmoke;
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
 }
 .book__button--ghost {
   color: whitesmoke;
   background: transparent;
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
   border-color: whitesmoke;
 }
-/* 
-.book__libraryWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
 
-.book__libraryMessage {
-  min-height: 1rem; 
-  font-size: 0.8rem;
-  color: #9ca3af;
+[data-theme="light"] .book__contentColumn {
+  color: black;
 }
-
-.book__libraryWrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.25rem !important;
+[data-theme="light"] .book__description {
+  color: black;
 }
-.book__libraryMessage {
-  height: 1rem !important; 
-  font-size: 0.8rem !important;
-  color: #9ca3af !important;
-  overflow: hidden !important;
+[data-theme="light"] .book__button--ghost {
+  color: black;
 }
- */

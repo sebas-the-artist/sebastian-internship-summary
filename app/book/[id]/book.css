@@ -26,7 +26,9 @@
   width: 100%;
   border-radius: 1rem;
   object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); */
+  padding-top: 12px;
+  padding-top: 32px;
 }
 
 .book__pill {
@@ -94,10 +96,12 @@
   cursor: pointer;
   border: 1px solid transparent;
   text-decoration: none;
+
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
 }
 
 .book__button--primary {
-  background: linear-gradient(to right, #22c55e, #22d3ee);
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
   color: #020617;
   font-weight: 600;
 }
@@ -110,6 +114,7 @@
 
 .book__button--ghost {
   background-color: transparent;
+  background: linear-gradient(to right, #b1b1b1d4, #cbcbcb5b);
   border-color: #4b5563;
   color: #e5e7eb;
 }
@@ -143,6 +148,7 @@
 
 .book__authorDescription {
   font-size: 0.9rem;
+  /* color: black; */
   color: #e5e7eb;
 }
 
@@ -167,6 +173,13 @@
   font-size: 0.8rem;
   color: #9ca3af;
 }
+/* highlights section */
+/* highlights section */
+/* highlights section */
+/* highlights section */
+/* highlights section */
+/* highlights section */
+
 /* highlights section */
 /* highlights section */
 /* highlights section */
@@ -251,4 +264,66 @@
   color: #f97373;
   font-size: 0.8rem;
   cursor: pointer;
+}
+
+[data-theme="light"] .book__contentColumn {
+  color: black;
+}
+[data-theme="light"] .book__description {
+  color: black;
+}
+[data-theme="light"] .book__button--ghost {
+  color: black;
+}
+[data-theme="light"] .book__authorDescription {
+  color: black;
+}
+
+/* 
+@media (max-width: 900px) {
+  .book__layout {
+            grid-template-columns: minmax(0, 1fr);
+    display: flex;
+    flex-direction: column;
+  }
+  .book__img {
+    max-width: 300px;
+            margin: 0 auto;
+  }
+}
+ */
+
+@media (max-width: 768px) {
+  .home__wrapper {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .home__text {
+    order: 2; /* Text stays below */
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .home__image {
+    order: 1; /* Image goes above */
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__image {
+    display: none; /* Hide image completely on tiny screens */
+  }
+
+  .home__wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .home__text {
+    margin-bottom: 1rem;
+  }
 }
