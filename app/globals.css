@@ -37,11 +37,9 @@ body {
   padding: 2rem;
 }
 
-/* globals.css */
-
 body {
   margin: 0;
-  background: #020617; /* dark background like template */
+  background: #020617;
 }
 
 .app_shell {
@@ -104,14 +102,13 @@ a {
 [data-theme="light"] {
   --bg: #ffffff;
   --fg: #0f172a;
-  --accent: #1d4ed8; /* navy-ish */
+  --accent: #1d4ed8;
   --card-bg: #f9fafb;
   --border-color: #e5e7eb;
 }
 
 @import "tailwindcss";
 
-/* Tailwind theme integration */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -124,7 +121,6 @@ a {
   --font-mono: var(--font-geist-mono);
 }
 
-/* Base dark/light preference (fallback) */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -132,7 +128,6 @@ a {
   }
 }
 
-/* Global theme variables driven by data-theme */
 :root {
   --bg: #020617;
   --fg: #f9fafb;
@@ -144,7 +139,7 @@ a {
 [data-theme="light"] {
   --bg: #ffffff;
   --fg: #0f172a;
-  --accent: #1d4ed8; /* navy-ish */
+  --accent: #1d4ed8;
   --card-bg: #f9fafb;
   --border-color: #e5e7eb;
 }
@@ -285,19 +280,6 @@ a {
 /
 */
 
-/* [data-theme="dark"] .forYou__card {
-  background: var(--card-bg);
-  border-color: var(--border-color);
-  color: var(--fg);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="dark"] .forYou__cardAuthor {
-  color: #9ca3af;
-}
- */
-
-/* Add/update these in globals.css */
 :root {
   /*  --favorite-color: #6b7280 !important; */
   --favorite-color: #888888 !important;
@@ -308,42 +290,15 @@ a {
   transition: filter 0.3s ease;
 }
 
-/* [data-theme="light"] .sidebar__logo {
-  filter: brightness(0.1) saturate(100%)
-    hue-rotate(var(--favorite-color-hue, 0deg));
-} */
 [data-theme="light"] .sidebar__logo {
   filter: brightness(0.15) saturate(1.2)
     hue-rotate(var(--favorite-color-hue, 120deg));
 }
 
-/* [data-theme="dark"] .sidebar__logo {
-  filter: brightness(0) saturate(100%) invert(1)
-    hue-rotate(var(--favorite-color-hue, 0deg));
-} */
 [data-theme="dark"] .sidebar__logo {
   filter: brightness(0) saturate(100%) invert(1)
     hue-rotate(var(--favorite-color-hue, 120deg));
 }
-
-/* Add to your globals.css */
-/* :root {
-  --favorite-color: #6b7280;
-}
-
-[data-theme="light"] .sidebar__logo {
-  filter: brightness(0.1) saturate(100%);
-}
-
-[data-theme="dark"] .sidebar__logo {
-  filter: brightness(0) saturate(100%) invert(1);
-}
-
-.sidebar__logo {
-  height: auto;
-  max-width: 100%;
-  transition: filter 0.3s ease;
-} */
 
 .sidebar__container {
   width: 220px;
@@ -358,20 +313,6 @@ a {
   flex-direction: column;
   gap: 12px;
 }
-
-/* .sidebar__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 6px 4px;
-  border-radius: 999px;
-  border: none;
-  background: transparent;
-  color: #9ca3af;
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-} */
 
 .sidebar__link:hover {
   background-color: rgba(148, 163, 184, 0.12);
@@ -410,20 +351,6 @@ a {
   flex-direction: column;
   gap: 8px;
 }
-
-/* .sidebar__link {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: none;
-  background: transparent;
-  color: #6b7280;
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-} */
-
 .sidebar__link:hover {
   background-color: rgba(148, 163, 184, 0.16);
 }
@@ -460,39 +387,13 @@ a {
   margin-bottom: 24px;
 }
 
-/* .sidebar__logo {
-  height: auto;
-  max-width: 100%;
-}
-[data-theme="dark"] .sidebar__logo {
-  filter: grayscale(100) brightness(5);
-} */
-
-/* :root {
-  --favorite-color: #22c55e;
-}
-
-[data-theme="light"] .sidebar__logo {
-  filter: none;
-}
-
-[data-theme="dark"] .sidebar__logo {
-  filter: brightness(0) saturate(100%) invert(1);
-}
-
-.sidebar__logo {
-  height: auto;
-  max-width: 100%;
-  filter: var(--favorite-color-filter, none);
-} */
-
 .sidebar__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   /* padding: 8px 10px; */
   padding: 12px 10px;
-  border-radius: 999px;
+  border-radius: 998px;
   border: none;
   background: transparent;
   color: #6b7280;
