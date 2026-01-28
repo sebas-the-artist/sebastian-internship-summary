@@ -9,9 +9,11 @@ import {
   fetchSuggestedBooks,
 } from "../store/booksSlice";
 import Link from "next/link";
-import SearchBar from "../components/Searchbar/SearchBar";
+import SearchBar from "../components/Searchbar/SearchBar.js";
+
 import SkeletonLoader from "../components/Skeleton/SkeletonLoader";
-import "./forYou.css";
+//import "./forYou.css";
+import "../globals.css";
 
 // Search API used by the search bar
 async function searchBooks(query) {
@@ -110,7 +112,7 @@ export default function ForYouPage() {
       <section className="forYou__wrapper">
         <div className="forYou__headerRow">
           <div>
-            <h1 className="forYou__heading">For you</h1>
+            <h1 className="forYou__heading">For your mom</h1>
             <p className="forYou__subtitle">
               Browse featured and recommended titles
             </p>
@@ -129,7 +131,7 @@ export default function ForYouPage() {
       <section className="forYou__wrapper">
         <div className="forYou__headerRow">
           <div>
-            <h1 className="forYou__heading">For you</h1>
+            <h1 className="forYou__heading phone__header">For you</h1>
           </div>
           <div className="forYou__searchInHeader">
             <SearchBar onSearch={handleSearch} />
@@ -144,7 +146,7 @@ export default function ForYouPage() {
     <section className="forYou__wrapper">
       <div className="forYou__headerRow">
         <div>
-          <h1 className="forYou__heading">For you</h1>
+          <h1 className="forYou__heading phone__header">For you</h1>
           <p className="forYou__subtitle">
             {/* Browse featured and recommended titles */}
           </p>
@@ -160,8 +162,8 @@ export default function ForYouPage() {
             {isSearching
               ? "Searching…"
               : searchResults.length
-              ? "Search results"
-              : "No results"}
+                ? "Search results"
+                : "No results"}
           </h2>
           {searchError && <p className="forYou__error">{searchError}</p>}
           {!isSearching && !searchError && searchResults.length > 0 && (
