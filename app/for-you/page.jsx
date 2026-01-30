@@ -9,7 +9,7 @@ import {
   fetchSuggestedBooks,
 } from "../store/booksSlice";
 import Link from "next/link";
-import SearchBar from "../components/Searchbar/SearchBar.js";
+import SearchBar from "../components/Searchbarfile/SearchBar.js";
 
 import SkeletonLoader from "../components/Skeleton/SkeletonLoader";
 //import "./forYou.css";
