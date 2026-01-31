@@ -15,9 +15,7 @@ export default function BookPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { currentBook, isLoading, error } = useSelector(
-    (state) => state.books
-  );
+  const { currentBook, isLoading, error } = useSelector((state) => state.books);
   const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ export default function BookPage() {
   }
 
   const book = currentBook;
-  console.log("Player book:", book)
+  console.log("Player book:", book);
 
   const shortSummary =
     book.summary && book.summary.length > 450
@@ -54,11 +52,7 @@ export default function BookPage() {
     <section className="book__wrapper">
       <div className="book__layout">
         <div className="book__coverColumn">
-          <img
-            src={book.imageLink}
-            alt={book.title}
-            className="book__img"
-          />
+          <img src={book.imageLink} alt={book.title} className="book__img" />
           {book.subscriptionRequired && (
             <span className="book__pill">Premium</span>
           )}
@@ -90,10 +84,7 @@ export default function BookPage() {
             >
               Listen
             </Link>
-            <a
-              href="#summary"
-              className="book__button book__button--secondary"
-            >
+            <a href="#summary" className="book__button book__button--secondary">
               Read
             </a>
           </div>
